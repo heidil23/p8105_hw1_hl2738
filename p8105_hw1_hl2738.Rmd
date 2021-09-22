@@ -1,0 +1,26 @@
+---
+title: "p8105_hw1_hl2738"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 1
+
+This **code chunk** creates a data frame comprised of a random sample of size 10 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10 with 3 different factor levels:
+
+```{r problem_1}
+library(tidyverse)
+
+problem_1_df =
+  tibble(
+    norm_samp = rnorm(10, mean = 1),
+    samp_pos = norm_samp > 0,
+    color = c("red", "orange", "yellow", "green", "blue", "purple", "teal", "black", "brown", "white"),
+    vec_factor = factor(c("low", "high", "med", "med", "low", "high", "low", "med", "high", "high"))
+  )
+
+problem_1_df
+```
