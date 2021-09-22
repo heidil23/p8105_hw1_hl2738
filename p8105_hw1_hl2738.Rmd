@@ -41,3 +41,14 @@ mean_color = mean(pull(problem_1_df, color))
 mean_vec_fac = mean(pull(problem_1_df, vec_factor))
 ```
 The code returns error messages for the variables "color" and "vec_factor," because it is not possible to take the mean of a character varaible ("color") or a factor variable ("vec_factor").
+
+#### Convert to numeric variables
+This code chunk attempts to convert the logical, character, and factor variables to numeric variables.
+
+```{r, eval = FALSE}
+problem_1_df$samp_pos <- as.numeric(problem_1_df$samp_pos)
+problem_1_df$color <- as.numeric(problem_1_df$color)
+problem_1_df$vec_factor <- as.numeric(problem_1_df$vec_factor)
+
+```
+The logical variable "samp_pos" and the factor variable "vec_factor" can be converted to numeric variables, however the character variable "color" cannot be converted to a numeric variable. This explains what happens when you try to take the mean, because while the logical variable was already stored as number and therefore a mean could be calculated, this was not the case for the character variable and the factor variable. While the factor variable can be converted to a numeric variable using the as.numeric function, character variables cannot be converted to numeric variables, and therefore a mean cannot be calculated.
