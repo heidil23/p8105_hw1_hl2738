@@ -52,3 +52,33 @@ problem_1_df$vec_factor <- as.numeric(problem_1_df$vec_factor)
 
 ```
 The logical variable "samp_pos" and the factor variable "vec_factor" can be converted to numeric variables, however the character variable "color" cannot be converted to a numeric variable. This explains what happens when you try to take the mean, because while the logical variable was already stored as number and therefore a mean could be calculated, this was not the case for the character variable and the factor variable. While the factor variable can be converted to a numeric variable using the as.numeric function, character variables cannot be converted to numeric variables, and therefore a mean cannot be calculated.
+
+## Problem 2
+
+This code chunk imports the Penguins dataset.
+
+```{r penguins}
+data("penguins", package = "palmerpenguins")
+```
+
+#### Description of Penguins dataset
+
+The data frame has `r nrow(penguins)` rows and `r ncol(penguins)` columns. The dataset includes the following variables: `r names(penguins)`.
+
+The dataset was collected between `r min(pull(penguins, year))` and `r max(pull(penguins, year))`. There are a total of `r nrow(penguins)` penguins in the data set. There are `r sum(penguins$sex == "male", na.rm = TRUE)` male penguins and `r sum(penguins$sex == "female", na.rm = TRUE)` female penguins. Penguins came from three different islands (`r levels(pull(penguins, island))`) and included three different species (`r levels(pull(penguins, species))`).
+
+The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE, digits = 2), digits = 2)` mm, and the mean bill length is `r round(mean(pull(penguins, bill_length_mm), na.rm = TRUE, digits = 2), digits = 2)` mm.
+
+#### Penguins scatterplot
+
+This code chunk creates a scatterplot of flipper length (mm) vs. bill length (mm):
+
+```{r scatterplot, collapse = TRUE}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+```
+The scatterplot shows a positive relationship between penguin flipper length and penguin bill length. The three penguin species are denoted by color.
+
+This code chunk exports the scatterplot as a pdf file.
+```{r scatterplot2, collapse = TRUE}
+ggsave("penguins_scatterplot.pdf", height = 4, width = 6)
