@@ -77,6 +77,7 @@ This code chunk creates a scatterplot of flipper length (mm) vs. bill length (mm
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
 ```
+
 The scatterplot shows a positive relationship between penguin flipper length and penguin bill length. The three penguin species are denoted by color.
 
 This code chunk exports the scatterplot as a pdf file.
